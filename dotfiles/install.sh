@@ -1,7 +1,12 @@
-git clone --bare git@github.com:troggo/dotfiles.git $HOME/dotfiles2
+# To install run:
+# $ curl -Lks https://raw.githubusercontent.com/troggo/dotfiles/master/dotfiles/install.sh | /bin/bash
+
 function dot {
    /usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME $@
 }
+
+cd $HOME
+git clone --bare git@github.com:troggo/dotfiles.git $HOME/dotfiles
 mkdir -p $HOME/dotfiles-backup
 dot checkout
 if [ $? = 0 ]; then
