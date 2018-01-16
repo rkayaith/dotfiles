@@ -7,13 +7,14 @@ function dot {
 
 cd $HOME
 git clone --bare git@github.com:troggo/dotfiles.git $HOME/dotfiles
-mkdir -p $HOME/dotfiles-backup
 dot checkout
 if [ $? = 0 ]; then
-  echo "Checked out dotfiles.";
+  echo "Checked out dotfiles."
   else
-    echo "Backing up pre-existing dotfiles.";
+    echo "Backing up pre-existing dotfiles."
+    mkdir -p $HOME/dotfiles-backup
     dot checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} $HOME/dotfiles-backup/{}
 fi;
 dot checkout
 dot config status.showUntrackedFiles no
+echo "Done."
