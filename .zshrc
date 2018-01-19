@@ -11,6 +11,9 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# make fzf use ripgrep
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
 # git but for dotfiles
 alias dot='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 

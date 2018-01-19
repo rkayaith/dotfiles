@@ -1,3 +1,16 @@
+" install vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" plugins
+call plug#begin('~/.vim/plugged')
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+call plug#end()
+
 syntax on
 colo slate
 filetype plugin indent on
@@ -12,6 +25,7 @@ nnoremap <leader>y "+y
 xnoremap <leader>y "+y
 nnoremap <leader>Y "+Y
 nnoremap <leader>p "+p
+nnoremap <leader>P "+P
 
 nnoremap <leader>e :e **/*
 
@@ -23,8 +37,23 @@ nnoremap <leader>ww :w<CR>
 nnoremap <leader>wq :wq<CR>
 nnoremap <leader>wz :w<CR><C-Z>
 
+" buffer management
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>d :bdelete<CR>
+
 nnoremap <leader>r <C-R>
 nnoremap <leader>z <C-Z>
+
+" search for ctags file all the way up to home
+set tags=./tags,tags;$HOME
+
+" :Rg command that uses ripgrep
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
 let c_space_errors = 1
 let java_space_errors = 1
