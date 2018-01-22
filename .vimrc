@@ -35,6 +35,7 @@ nnoremap <leader>O O<Esc>
 nnoremap <leader>q  :q<CR>
 nnoremap <leader>ww :w<CR>
 nnoremap <leader>wq :wq<CR>
+nnoremap <leader>wd :w<CR>:bdelete<CR>
 nnoremap <leader>wz :w<CR><C-Z>
 
 " buffer management
@@ -43,6 +44,8 @@ nnoremap <leader>d :bdelete<CR>
 
 nnoremap <leader>r <C-R>
 nnoremap <leader>z <C-Z>
+
+nnoremap <leader>h :noh<CR>
 
 " search for ctags file all the way up to home
 set tags=./tags,tags;$HOME
