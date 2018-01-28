@@ -1,21 +1,46 @@
-export ZSH=$HOME/.oh-my-zsh
+# zsh
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt appendhistory autocd
+bindkey -v
 
-ZSH_THEME="robbyrussell"
+# compinstall
+zstyle :compinstall filename '/home/rk/.zshrc'
+autoload -Uz compinit
+compinit
 
-# Enable command auto-correction.
-ENABLE_CORRECTION="true"
+# plugins
+ANTIGEN=/usr/share/zsh-antigen/
+if [ ! -d $ANTIGEN ]; then
+    echo "Install antigen: https://github.com/zsh-users/antigen"
+else
+    source $ANTIGEN/antigen.zsh
+    antigen theme subnixr/minimal minimal
+    antigen bundle chriskempson/base16-shell
+    antigen bundle zsh-users/zsh-autosuggestions
+    antigen bundle zsh-users/zsh-syntax-highlighting
+    antigen bundle zsh-users/zsh-history-substring-search
+    antigen apply
+fi
 
-plugins=(
-  git
-)
+# MNML theme config
+export MNML_INFOLN=()
+export MNML_MAGICENTER=()
+export MNML_USER_CHAR='‹::'
+export MNML_INSERT_CHAR='$›'
 
-source $ZSH/oh-my-zsh.sh
+# history-substring-search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # make fzf use ripgrep
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # git but for dotfiles
 alias dot='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+
+alias ls='ls --color=auto'
 
 # Replace all in files
 function wrg {
