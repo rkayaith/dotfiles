@@ -9,11 +9,19 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'chriskempson/base16-vim'
 call plug#end()
 
-syntax on
-colo slate
+syntax enable
 filetype plugin indent on
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+  " change some colors
+  call Base16hi("Comment", g:base16_gui0C, "", g:base16_cterm0C, "", "", "")
+  call Base16hi("LineNr", "", g:base16_gui00, "", g:base16_cterm00, "", "")
+endif
 
 let mapleader = ' '
 
@@ -61,11 +69,11 @@ command! -bang -nargs=* Rg
 let c_space_errors = 1
 let java_space_errors = 1
 
+set hidden
+set cursorline
 set tabstop=4 shiftwidth=4
 set expandtab " use spaces instead of tabs
-
 set number
-highlight LineNr ctermfg=DarkGray
 
 set hlsearch incsearch ignorecase smartcase
 
