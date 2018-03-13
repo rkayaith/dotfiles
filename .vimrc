@@ -25,6 +25,9 @@ endif
 
 let mapleader = ' '
 
+" allow mouse scrolling and other mouse things
+set mouse=a
+
 " ez escape
 inoremap jk <Esc>
 
