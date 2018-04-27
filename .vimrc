@@ -58,6 +58,13 @@ nnoremap <leader>z <C-Z>
 
 nnoremap <leader>h :noh<CR>
 
+" completions
+inoremap <S-Tab> <C-N>
+
+" tags
+nnoremap <leader>[ <C-T>
+nnoremap <leader>] <C-]>
+
 " search for ctags file all the way up to home
 set tags=./tags,tags;$HOME
 

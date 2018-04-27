@@ -31,7 +31,7 @@ else
     antigen bundle subnixr/minimal
     antigen bundle chriskempson/base16-shell
     antigen bundle zsh-users/zsh-autosuggestions
-    antigen bundle zsh-users/zsh-syntax-highlighting
+    # antigen bundle zsh-users/zsh-syntax-highlighting
     antigen bundle zsh-users/zsh-history-substring-search
     antigen apply
 fi
@@ -71,6 +71,7 @@ function wrg {
     if [[ $2 != '--replace' ]]; then
         echo "wrg foo --replace bar -> rg -l foo | xargs sed -i '' 's/foo/bar/g'"
     else
+        echo "rg -l \"$1\" | xargs sed -i '' \"s/$1/$3/g\""
         rg -l $1 | xargs sed -i '' "s/$1/$3/g"
     fi
 }
