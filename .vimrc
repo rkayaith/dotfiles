@@ -7,11 +7,13 @@ endif
 
 " plugins
 call plug#begin('~/.vim/plugged')
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'chriskempson/base16-vim'
 call plug#end()
 
+let c_space_errors = 1
+let java_space_errors = 1
+let python_highlight_all = 1
+let python_space_error_highlight = 1
 syntax enable
 filetype plugin indent on
 
@@ -50,8 +52,7 @@ nnoremap <leader>wd :w<CR>:bdelete<CR>
 nnoremap <leader>wz :w<CR><C-Z>
 
 " buffer management
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>d :bdelete<CR>
+nnoremap <leader>bd :bdelete<CR>
 
 nnoremap <leader>r <C-R>
 nnoremap <leader>z <C-Z>
@@ -67,17 +68,6 @@ nnoremap <leader>] <C-]>
 
 " search for ctags file all the way up to home
 set tags=./tags,tags;$HOME
-
-" :Rg command that uses ripgrep
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
-
-let c_space_errors = 1
-let java_space_errors = 1
 
 set hidden
 set cursorline
