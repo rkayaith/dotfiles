@@ -1,5 +1,10 @@
-# environment specific stuff
-source $HOME/.env 2>/dev/null
+export EDITOR=vim
+
+# local config
+source $HOME/.zshrc.local 2>/dev/null
+
+# common aliases
+source $HOME/.aliases
 
 # zsh
 HISTFILE=$HOME/.histfile
@@ -54,21 +59,9 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=50
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-export EDITOR=vim
 
 # make fzf use ripgrep
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-
-# git but for dotfiles
-alias dot='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
-
-# TODO: fix on linux
-# alias ls='ls --color=auto'
-alias ls='ls -G'
-alias py='pipenv run python'
-alias pe='PIPENV_VENV_IN_PROJECT=1 pipenv' # pe --three to init new proj
-
-alias mysql.356="mysql -u rkayaith -p -h marmoset04.shoshin.uwaterloo.ca"
 
 # Replace all in files
 function wrg {

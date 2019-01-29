@@ -1,0 +1,16 @@
+# git but for dotfiles
+alias dot="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+
+alias src="source $HOME/.\$0rc"
+alias brc="$EDITOR $HOME/.bashrc"
+alias zrc="$EDITOR $HOME/.zshrc"
+alias vrc="$EDITOR $HOME/.vimrc"
+alias arc="$EDITOR $HOME/.aliases"
+
+alias ls "ls --color=auto"
+
+alias py="pipenv run python"
+alias pdb="py -m pdb"
+alias pe="PIPENV_VENV_IN_PROJECT=1 pipenv" # 'pe --three' to init new proj
+
+alias mysql.356="mysql -u rkayaith -p -h marmoset04.shoshin.uwaterloo.ca"
