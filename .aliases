@@ -7,10 +7,11 @@ alias zrc="$EDITOR $HOME/.zshrc"
 alias vrc="$EDITOR $HOME/.vimrc"
 alias arc="$EDITOR $HOME/.aliases"
 
-alias ls "ls --color=auto"
+alias ls="ls --color=auto"
 
-alias py="pipenv run python"
-alias pdb="py -m pdb"
+alias py="pe run python"
 alias pe="PIPENV_VENV_IN_PROJECT=1 pipenv" # 'pe --three' to init new proj
+alias pdb="py -m pdb"
+alias pyprof="py -m cProfile"
 
 alias mysql.356="mysql -u rkayaith -p -h marmoset04.shoshin.uwaterloo.ca"
