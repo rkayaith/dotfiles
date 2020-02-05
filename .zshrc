@@ -72,3 +72,9 @@ function wrg {
         rg -l $1 | xargs sed -i '' "s/$1/$3/g"
     fi
 }
+function h2d {
+    echo "ibase=16; $(echo $@ | tr '[a-z]' '[A-Z]')" | bc
+}
+function d2h {
+    echo "obase=16; $@" | bc
+}

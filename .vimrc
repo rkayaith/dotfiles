@@ -8,6 +8,7 @@ endif
 " plugins
 call plug#begin('~/.vim/plugged')
 Plug 'chriskempson/base16-vim'
+Plug 'airblade/vim-rooter'
 call plug#end()
 
 let c_space_errors = 1
@@ -25,7 +26,10 @@ if filereadable(expand("~/.vimrc_background"))
   call Base16hi("LineNr", "", g:base16_gui00, "", g:base16_cterm00, "", "")
 endif
 
-let mapleader = ' '
+let mapleader = '\'
+
+nnoremap <CR> :
+nnoremap <BS> <C-^>
 
 " allow mouse scrolling and other mouse things
 set mouse=a
@@ -66,8 +70,8 @@ inoremap <S-Tab> <C-N>
 nnoremap <leader>[ <C-T>
 nnoremap <leader>] <C-]>
 
-" search for ctags file all the way up to home
-set tags=./tags,tags;$HOME
+" look for ctags files created by git hooks
+set tags=./.git/tags
 
 set hidden
 set cursorline
